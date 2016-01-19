@@ -30,9 +30,9 @@ public class TestAOP {
 
     @AfterReturning(pointcut = "testMethod()", returning="obj")
     private void afterReturning(Object obj){
-        logger.info("Метод вернул значение {}",obj.toString());
+        logger.info("Метод вернул значение {}", obj);
     }
-    
+
     @Around("testMethod()")
     private Object arount(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("Вместо метода :)");
@@ -40,7 +40,6 @@ public class TestAOP {
         for (Object o : joinPoint.getArgs()) {
             logger.info("Аргумент: {}",o);
         }
-
         return joinPoint.proceed();
     }
 
