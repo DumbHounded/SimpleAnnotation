@@ -33,7 +33,7 @@ public class TestAOP {
         logger.info("Метод вернул значение {}", obj);
     }
 
-    @Around("testMethod()")
+    @Around("testMethod() && @annotation(xyz.incraft.SimpleAnnotation.annotation.ShowMethod)")
     private Object arount(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("Вместо метода :)");
         //если есть аргументы метода
@@ -42,6 +42,4 @@ public class TestAOP {
         }
         return joinPoint.proceed();
     }
-
-
 }
